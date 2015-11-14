@@ -1,0 +1,26 @@
+<html>
+	<head>
+		<title>Rise</title>
+		<script src="js/tabletop.js"></script>
+	</head>
+  <body>
+		<h1>Hello</h1>
+		<div id="x">Loading...</div>
+
+		<script>
+		console.log("go");
+		function init() {
+			Tabletop.init( { 
+				key: '1LA-h2hJOS4U2P5Mx4dheb7LEY3Yx9afR2pxd2WwlCMM',
+				callback: function(data, tabletop) {
+					console.log(data);
+				},
+				simpleSheet: true
+			});
+		}
+		init();
+
+		</script>
+		
+  </body>
+</html>
