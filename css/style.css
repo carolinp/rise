@@ -58,6 +58,9 @@ h1 a {
 	margin: 20px;
 }
 
+.media img {
+	max-width: 320px;
+}
 
 
 

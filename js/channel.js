@@ -1,9 +1,8 @@
 var Channel = {
 
 	init: function() {
-		var self = this;
-
 		this.neighborhood = "Bastrop";
+		document.title = "Rise: " + this.neighborhood;
 		Utils.getPosts(function(posts){
 			Channel.build(posts);
 		})

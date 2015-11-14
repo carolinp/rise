@@ -39,6 +39,7 @@ var Posts = {
 
 			if ( post.id == this.postId ) {
 				html += this.getPostHTML(post);
+				document.title = "Rise: " + post.title;
 			}
 			if ( post.parent == this.postId ) {
 				subPosts.push(post);
