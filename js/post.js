@@ -4,8 +4,8 @@ var Posts = {
 		var self = this;
 		this.postId = this.getPostId();
 		if (this.postId) {
-			this.getPosts(function(data){
-				self.build();
+			Utils.getPosts(function(posts){
+				Posts.build(posts);
 			})
 		} else {
 			console.log("Deadend. No post id");
@@ -23,36 +23,6 @@ var Posts = {
 		}
 		console.log("hash as id = ", hash);
 		return hash;
-	},
-
-	getPosts: function(callback) {
-		var callback = callback || {};
-		var self = this;
-		Tabletop.init( { 
-			key: '1LA-h2hJOS4U2P5Mx4dheb7LEY3Yx9afR2pxd2WwlCMM',
-			callback: function(data, tabletop) {
-				var posts = tabletop.models.posts.elements;
-				console.log("posts", posts);
-				self.build(posts);
-			},
-			simpleSheet: true
-		});
-	},
-
-	getMedia: function(post) {
-		//media-link	media-thumbnail	media-description
-		var html = "";
-
-		if (post["media-thumbnail"] != "") {
-			html += "<div class='media'>";
-			html += "<img src='" + post["media-thumbnail"] + "'/>";
-			if (post["media-description"] != "") {
-				html += "<p>" + post["media-description"] + "</p>";
-			}
-			html += "</div>";
-		}
-		
-		return html;
 	},
 
 	build: function(posts){
@@ -90,7 +60,7 @@ var Posts = {
 		html += title + "<p>" + post.content + "</p>";
 
 		if (post.parent == 0) {
-			html += this.getMedia(post);
+			html += Utils.getMedia(post);
 		}
 		html += "</div>";
 
