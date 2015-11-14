@@ -60,9 +60,9 @@ var Posts = {
 		html += "<div class='post'>";
 		html += title + "<p>" + post.content + "</p>";
 
-		if (post.parent == 0) {
+	//	if (post.parent == 0) {
 			html += Utils.getMedia(post);
-		}
+	//	}
 		html += "</div>";
 
 		return html;
