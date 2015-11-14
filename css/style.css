@@ -19,12 +19,13 @@ header img {
 }
 
 h1 {
-	margin: 10px auto;
+	margin: 10px auto !important;
 	position: relative;
 	width: 100%;
 	max-width: 800px;
 }
 
+a p,
 h1 a {
 	color: black;
 }
