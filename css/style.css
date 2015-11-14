@@ -4,5 +4,39 @@ body {
     font-size: 14px;
     line-height: 1.42857143;
     color: #333333;
-    background-color: #c6c5c4;
+    background-color: #ededed;
+}
+
+header {
+	height: 100px;
+	background-color: white;
+	border-bottom: 1px solid black;
+}
+
+
+header img {
+	max-width: 200px;
+	margin: 25px 25px 25px 50px;
+}
+
+h1 {
+	margin: 10px auto;
+	position: relative;
+	width: 100%;
+	max-width: 800px;
+}
+
+#content {
+	display: block;
+	background-color: white;
+	margin: 10px auto;
+	border: 1px solid #ddd;
+	background: #fff;
+	position: relative;
+    width: 100%;
+    max-width: 800px;
+}
+
+.post {
+	margin: 25px;
 }

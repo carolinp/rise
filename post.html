@@ -5,6 +5,11 @@
 		<link rel="stylesheet" href="css/style.css">
 	</head>
   <body>
+
+		<header>
+			<img src="img/logo.png">
+		</header>
+
 		<h1>Bastrop</h1>
 
 		<div id="content">Loading...</div>
@@ -67,13 +72,14 @@
 						html += this.getPostHTML(post);
 					}
 					if ( post.parent == this.postId ) {
-						html += "<div class='sub-post'><h2>" + post.title + "</h2><p>" + post.content + "</p></div>"
+						subPosts.push(post);
 					}
 				}
 
 				if (subPosts.length > 0 ) {
-					html += this.getPostHTML(subPosts);
+					html += this.getSubPostHTML(subPosts);
 				}
+				console.log("subPosts",subPosts);
 
 				document.getElementById("content").innerHTML = html;
 			},
@@ -84,7 +90,7 @@
 			},
 
 			getSubPostHTML: function(posts) {
-				
+
 				var len = posts.length;
 				if (len ==0) {
 					return "";
