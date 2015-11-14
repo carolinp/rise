@@ -1,0 +1,55 @@
+<html>
+	<head>
+		<title>Rise - Bastrop</title>
+		<script src="js/tabletop.js"></script>
+	</head>
+  <body>
+		<h1>Bastrop</h1>
+
+		<div id="content">Loading...</div>
+
+		<script>
+		var Channel = {
+
+			init: function() {
+				var self = this;
+				this.getPosts(function(data){
+					self.build();
+				})
+			},
+
+			getPosts: function(callback) {
+				var callback = callback || {};
+				var self = this;
+				Tabletop.init( { 
+					key: '1LA-h2hJOS4U2P5Mx4dheb7LEY3Yx9afR2pxd2WwlCMM',
+					callback: function(data, tabletop) {
+						var posts = tabletop.models.posts.elements;
+						console.log("posts", posts);
+						self.build(posts);
+					},
+					simpleSheet: true
+				});
+			},
+
+			build: function(posts){
+
+				var html = "";
+				var len = posts.length;
+				for (var i=0; i<len; i++) {
+					var post = posts[i];
+					console.log("post", post);
+					if (post.parent == 0) {
+						html += "<div class='post'><h2>" + post.title + "</h2><p>" + post.content + "</p></div>"
+					}
+				}
+				document.getElementById("content").innerHTML = html;
+			}
+		};
+
+		Channel.init();
+
+		</script>
+		
+  </body>
+</html>
