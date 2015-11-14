@@ -39,6 +39,22 @@ var Posts = {
 		});
 	},
 
+	getMedia: function(post) {
+		//media-link	media-thumbnail	media-description
+		var html = "";
+
+		if (post["media-thumbnail"] != "") {
+			html += "<div class='media'>";
+			html += "<img src='" + post["media-thumbnail"] + "'/>";
+			if (post["media-description"] != "") {
+				html += "<p>" + post["media-description"] + "</p>";
+			}
+			html += "</div>";
+		}
+		
+		return html;
+	},
+
 	build: function(posts){
 
 		var html = "";
@@ -69,7 +85,16 @@ var Posts = {
 
 	getPostHTML: function(post) {
 		var title = (post.title != "") ? "<h2>" + post.title + "</h2>" : "";
-		return "<div class='post'>" + title + "<p>" + post.content + "</p></div>";
+		var html = "";
+		html += "<div class='post'>";
+		html += title + "<p>" + post.content + "</p>";
+
+		if (post.parent == 0) {
+			html += this.getMedia(post);
+		}
+		html += "</div>";
+
+		return html;
 	},
 
 	getSubPostHTML: function(posts) {

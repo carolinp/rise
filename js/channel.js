@@ -4,7 +4,6 @@ var Channel = {
 		var self = this;
 
 		this.neighborhood = "Bastrop";
-
 		this.getPosts(function(data){
 			self.build();
 		})
@@ -24,6 +23,22 @@ var Channel = {
 		});
 	},
 
+	getMedia: function(post) {
+		//media-link	media-thumbnail	media-description
+		var html = "";
+
+		if (post["media-thumbnail"] != "") {
+			html += "<div class='media'>";
+			html += "<img src='" + post["media-thumbnail"] + "'/>";
+			if (post["media-description"] != "") {
+				html += "<p>" + post["media-description"] + "</p>";
+			}
+			html += "</div>";
+		}
+		
+		return html;
+	},
+
 	build: function(posts){
 
 		var html = "";
@@ -33,7 +48,10 @@ var Channel = {
 			console.log("post", post);
 			if (post.parent == 0) {
 				var link = "post.html#" + this.neighborhood.toLowerCase() + "-" + post.id;
-				html += "<div class='post'><a href='" + link + "'><h2>" + post.title + "</h2><p>" + post.content + "</p></a></div>"
+				html += "<div class='post'>";
+				html += "<a href='" + link + "'><h2>" + post.title + "</h2><p>" + post.content + "</p></a>";
+				html += this.getMedia(post);
+				html += "</div>";
 			}
 		}
 		document.getElementById("content").innerHTML = html;
