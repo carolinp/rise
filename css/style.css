@@ -13,7 +13,6 @@ header {
 	border-bottom: 1px solid black;
 }
 
-
 header img {
 	max-width: 200px;
 	margin: 25px 25px 25px 50px;
@@ -26,6 +25,10 @@ h1 {
 	max-width: 800px;
 }
 
+h1 a {
+	color: black;
+}
+
 #content {
 	display: block;
 	background-color: white;
@@ -33,10 +36,27 @@ h1 {
 	border: 1px solid #ddd;
 	background: #fff;
 	position: relative;
-    width: 100%;
-    max-width: 800px;
+	width: 100%;
+	max-width: 800px;
 }
 
 .post {
 	margin: 25px;
 }
+
+.subposts {
+	margin-top: 20px;
+	border-top: 1px dotted#ccc;
+}
+
+.subposts .post {
+	border: 1px solid black;
+}
+
+.subposts .post p {
+	margin: 20px;
+}
+
+
+
+
